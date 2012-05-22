@@ -17,7 +17,7 @@
 # under the License.
 #
 
-from thrift.protocol.TProtocol import *
+from .TProtocol import *
 from struct import pack, unpack
 
 

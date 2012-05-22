@@ -26,7 +26,7 @@ import warnings
 
 from io import BytesIO
 
-from thrift.transport.TTransport import *
+from .TTransport import *
 
 
 class THttpClient(TTransportBase):
