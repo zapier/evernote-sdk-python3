@@ -1,0 +1,77 @@
+10
+
+dir
+252952
+https://rev.evernote.com/svn/evernote-service/en-thrift/trunk/src/main/python/evernote/edam
+https://rev.evernote.com/svn
+
+
+
+2012-05-21T23:59:52.933400Z
+252719
+eroskos
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+707486d3-b614-0410-a2d3-c3136ddee281
+
+limits
+dir
+
+type
+dir
+
+notestore
+dir
+
+__init__.py
+file
+
+
+
+
+2012-05-22T20:18:48.000000Z
+d41d8cd98f00b204e9800998ecf8427e
+2008-10-05T07:21:18.708672Z
+36858
+dengberg
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+0
+
+error
+dir
+
+userstore
+dir
+

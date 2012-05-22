@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/244791/evernote-service/en-thrift/trunk/src/main/python/evernote/edam/userstore
+END
+ttypes.py
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/!svn/ver/241227/evernote-service/en-thrift/trunk/src/main/python/evernote/edam/userstore/ttypes.py
+END
+UserStore.py
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/244791/evernote-service/en-thrift/trunk/src/main/python/evernote/edam/userstore/UserStore.py
+END
+constants.py
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/241227/evernote-service/en-thrift/trunk/src/main/python/evernote/edam/userstore/constants.py
+END
+UserStore-remote
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/241227/evernote-service/en-thrift/trunk/src/main/python/evernote/edam/userstore/UserStore-remote
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/!svn/ver/36858/evernote-service/en-thrift/trunk/src/main/python/evernote/edam/userstore/__init__.py
+END
