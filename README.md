@@ -3,7 +3,7 @@ Evernote SDK for Python version 1.21
 
 Overview
 --------
-This is a test SDK! The official Evernote SDK for Python doesn't support Python 3 yet; this repository is an experiment as we try to migrate.
+**This is a test SDK!** The official Evernote SDK for Python doesn't support Python 3 yet; this repository is an experiment as we try to migrate.
 
 This SDK contains wrapper code used to call the Evernote Cloud API from Python.
 
