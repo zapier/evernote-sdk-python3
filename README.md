@@ -1,8 +1,10 @@
-Evernote SDK for Python version EDAM_VERSION
+Evernote SDK for Python version 1.21
 ============================================
 
 Overview
 --------
+This is a test SDK! The official Evernote SDK for Python doesn't support Python 3 yet; this repository is an experiment as we try to migrate.
+
 This SDK contains wrapper code used to call the Evernote Cloud API from Python.
 
 The SDK also contains a sample script. The code demonstrates the basic use of the SDK for single-user scripts. Real web applications must use OAuth to authenticate to the Evernote service.
