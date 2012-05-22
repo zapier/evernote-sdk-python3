@@ -1,5 +1,7 @@
-Evernote SDK for Python version 1.21
+Evernote SDK for Python 3
 ============================================
+
+Evernote API version 1.21
 
 Overview
 --------
