@@ -21,10 +21,12 @@ In order to run the client client sample code, you need a developer token. Get o
 
 Getting Started
 ---------------
-The code in sample/client/EDAMTest.py demonstrates the basics of using the Evernote API, using developer tokens to simplify the authentication process while you're learning. 
+The code in `sample/client/EDAMTest.py` demonstrates the basics of using the Evernote API, using developer tokens to simplify the authentication process while you're learning.
 
-1. Open sample/client/EDAMTest.py
+1. Open `sample/client/EDAMTest.py`
 2. Scroll down and fill in your Evernote developer token.
 3. On the command line, run the following command to execute the script:
 
-    export PYTHONPATH=../lib; python EDAMTest.py
+    ```bash
+    $ export PYTHONPATH=../../lib; python EDAMTest.py
+    ```
