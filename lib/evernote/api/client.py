@@ -136,11 +136,11 @@ class Store(object):
 
     def _get_thrift_client(self, client_class, url):
         http_client = THttpClient.THttpClient(url)
-        http_client.setCustomHeaders({
-            'User-Agent': "%s / %s; Python / %s;"
-                          % (
-                self._user_agent_id, self._get_sdk_version(), sys.version)
-        })
+        python_and_sys_version = "{} / {}; Python / {};".format(
+            self._user_agent_id, self._get_sdk_version(), sys.version
+        )
+        headers = {'User-Agent': python_and_sys_version}
+        http_client.setCustomHeaders(headers)
 
         thrift_protocol = TBinaryProtocol.TBinaryProtocol(http_client)
         return client_class(thrift_protocol)
