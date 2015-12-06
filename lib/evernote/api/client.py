@@ -44,9 +44,8 @@ class EvernoteClient(object):
             self._get_endpoint('OAuth.action'),
             urllib.parse.quote(request_token['oauth_token']))
 
-    def get_access_token(
-            self, oauth_token, oauth_token_secret, oauth_verifier
-    ):
+    def get_access_token(self, oauth_token,
+                         oauth_token_secret, oauth_verifier, return_full_dict=False):
         client = OAuth1Session(client_key=self.consumer_key,
                                client_secret=self.consumer_secret,
                                resource_owner_key=oauth_token,
@@ -55,7 +54,18 @@ class EvernoteClient(object):
         access_token_url = self._get_endpoint('oauth')
         access_token = client.fetch_access_token(access_token_url)
         self.token = access_token['oauth_token']
+
+        if return_full_dict:
+            return access_token
+
         return self.token
+
+    def get_access_token_dict(self, oauth_token,
+                              oauth_token_secret, oauth_verifier):
+        self.get_access_token(oauth_token=oauth_token,
+                              oauth_token_secret=oauth_token_secret,
+                              oauth_verifier=oauth_verifier,
+                              return_full_dict=True)
 
     def get_user_store(self):
         user_store_uri = self._get_endpoint("/edam/user")
