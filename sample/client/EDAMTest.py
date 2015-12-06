@@ -12,6 +12,7 @@ import hashlib
 import binascii
 import evernote.edam.userstore.constants as UserStoreConstants
 import evernote.edam.type.ttypes as Types
+import os
 
 from evernote.api.client import EvernoteClient
 
@@ -66,7 +67,9 @@ note.title = "Test note from EDAMTest.py"
 # for the attachment. At a minimum, the Resource contains the binary attachment
 # data, an MD5 hash of the binary data, and the attachment MIME type.
 # It can also include attributes such as filename and location.
-image = open('enlogo.png', 'rb').read()
+image_path = constants_path = os.path.join(os.path.dirname(__file__), "enlogo.png")
+with open(image_path, 'rb') as image_file:
+    image = image_file.read()
 md5 = hashlib.md5()
 md5.update(image)
 hash = md5.digest()
