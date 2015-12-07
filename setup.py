@@ -19,18 +19,18 @@ def read_from_same_directory(filename):
 
 
 setup(
-    name='evernote',
+    name='evernote3',
     version="{major}.{minor}.0".format(major=EDAM_VERSION_MAJOR,
                                        minor=EDAM_VERSION_MINOR),
     author='Evernote Corporation',
     author_email='api@evernote.com',
     url='http://dev.evernote.com',
-    description='Evernote SDK for Python',
-    long_description=read_from_same_directory('README.md'),
+    description='Evernote SDK for Python3',
+    #long_description=read_from_same_directory('README.md'),
     packages=find_packages('lib'),
     package_dir={'': 'lib'},
     classifiers=[
-        'Development Status :: 4 - Production/Beta',
+        'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
         'Topic :: Software Development :: Libraries',
