@@ -2,8 +2,8 @@ import sys
 import functools
 import inspect
 import re
-from requests_oauthlib import OAuth1Session
 
+import oauth2 as oauth
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -30,42 +30,65 @@ class EvernoteClient(object):
         self.token = options.get('token')
         self.secret = options.get('secret')
 
-    def get_request_token(self, callback_url):
-        client = OAuth1Session(client_key=self.consumer_key,
-                               client_secret=self.consumer_secret)
+    def _get_oauth_client(self, token=None):
+        consumer = oauth.Consumer(self.consumer_key, self.consumer_secret)
+        if token:
+            client = oauth.Client(consumer, token)
+        else:
+            client = oauth.Client(consumer)
+        return client
 
-        request_url = '%s?oauth_callback=%s' % (
-            self._get_endpoint('oauth'), urllib.parse.quote_plus(callback_url))
-        request_token = client.fetch_request_token(request_url)
+    def get_request_token(self, callback_url):
+
+        client = self._get_oauth_client()
+        request_url = '{}?oauth_callback={}'.format(
+            self._get_endpoint('oauth'), urllib.parse.quote(callback_url)
+        )
+
+        resp, content = client.request(request_url, 'GET')
+        request_token = dict(urllib.parse.parse_qsl(content.decode('utf-8')))
         return request_token
 
     def get_authorize_url(self, request_token):
-        return '%s?oauth_token=%s' % (
+        return '{}?oauth_token={}'.format(
             self._get_endpoint('OAuth.action'),
-            urllib.parse.quote(request_token['oauth_token']))
+            urllib.parse.quote(request_token['oauth_token'])
+        )
 
     def get_access_token(self, oauth_token,
                          oauth_token_secret, oauth_verifier, return_full_dict=False):
-        client = OAuth1Session(client_key=self.consumer_key,
-                               client_secret=self.consumer_secret,
-                               resource_owner_key=oauth_token,
-                               resource_owner_secret=oauth_token_secret,
-                               verifier=oauth_verifier)
-        access_token_url = self._get_endpoint('oauth')
-        access_token = client.fetch_access_token(access_token_url)
-        self.token = access_token['oauth_token']
+        token = oauth.Token(oauth_token, oauth_token_secret)
+        token.set_verifier(oauth_verifier)
+        client = self._get_oauth_client(token)
+
+        resp, content = client.request(self._get_endpoint('oauth'), 'POST')
+        access_token_dict = dict(urllib.parse.parse_qsl(content.decode('utf-8')))
+        self.token = access_token_dict['oauth_token']
 
         if return_full_dict:
-            return access_token
+            return access_token_dict
 
-        return self.token
+        return access_token_dict['oauth_token']
 
     def get_access_token_dict(self, oauth_token,
                               oauth_token_secret, oauth_verifier):
-        self.get_access_token(oauth_token=oauth_token,
-                              oauth_token_secret=oauth_token_secret,
-                              oauth_verifier=oauth_verifier,
-                              return_full_dict=True)
+        """
+        Full dict looks like:
+
+         {'edam_shard': 's146',
+         'edam_noteStoreUrl': 'https://www.evernote.com/shard/s146/notestore',
+         'edam_userId': '19358593',
+         'edam_webApiUrlPrefix': 'https://www.evernote.com/shard/s146/',
+         'edam_expires': '1481161090922',
+         'oauth_token': '...'}
+
+        Unit of expire time is millisecond.
+        """
+        access_token_dict = self.get_access_token(oauth_token=oauth_token,
+                                                  oauth_token_secret=oauth_token_secret,
+                                                  oauth_verifier=oauth_verifier,
+                                                  return_full_dict=True)
+        return access_token_dict
 
     def get_user_store(self):
         user_store_uri = self._get_endpoint("/edam/user")
