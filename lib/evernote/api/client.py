@@ -139,7 +139,7 @@ class Store(object):
         http_client.setCustomHeaders({
             'User-Agent': "%s / %s; Python / %s;"
                           % (
-                self._user_agent_id, self._get_sdk_version(), sys.version)
+                self._user_agent_id, self._get_sdk_version(), sys.version.replace("\n", ""))
         })
 
         thrift_protocol = TBinaryProtocol.TBinaryProtocol(http_client)
