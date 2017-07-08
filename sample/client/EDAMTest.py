@@ -31,7 +31,14 @@ if auth_token == "your developer token":
 # service, change sandbox=False and replace your
 # developer token above with a token from
 # https://www.evernote.com/api/DeveloperToken.action
-client = EvernoteClient(token=auth_token, sandbox=True)
+# To access Sandbox service, set sandbox to True
+# To access production (International) service, set both sandbox and china to False
+# To access production (China) service, set sandbox to False and china to True
+
+sandbox=True
+china=False
+
+client = EvernoteClient(token=auth_token, sandbox=sandbox,china=china)
 
 user_store = client.get_user_store()
 
