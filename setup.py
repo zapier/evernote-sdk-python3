@@ -40,6 +40,6 @@ setup(
     install_requires=[
         'oauthlib',
         'requests_oauthlib'
-        'thrift',
+        'thrift==0.11.0',
     ],
 )
