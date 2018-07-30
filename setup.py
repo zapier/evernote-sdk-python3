@@ -20,8 +20,8 @@ def read_from_same_directory(filename):
 
 setup(
     name='evernote3',
-    version="{major}.{minor}.0".format(major=EDAM_VERSION_MAJOR,
-                                       minor=EDAM_VERSION_MINOR),
+    version="{major}.{minor}.post1".format(major=EDAM_VERSION_MAJOR,
+                                           minor=EDAM_VERSION_MINOR),
     author='Evernote Corporation',
     author_email='api@evernote.com',
     url='http://dev.evernote.com',
