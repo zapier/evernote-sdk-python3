@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 
 # Load version number from Thrift-Compiler-generated .py file
-constants_path = os.path.join(os.path.dirname(__file__), "lib", "evernote",
+constants_path = os.path.join(os.path.dirname(__file__), "evernote",
                               "edam", "userstore", "constants.py")
 
 with open(constants_path) as constants_file:
@@ -26,7 +26,7 @@ setup(
     author_email='api@evernote.com',
     url='http://dev.evernote.com',
     description='Evernote SDK for Python3',
-    packages=find_packages('lib',exclude=["*.thrift", "*.thrift.*", "thrift.*", "thrift"]),
+    packages=find_packages(include=['evernote'],exclude=["*.thrift", "*.thrift.*", "thrift.*", "thrift"]),
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
@@ -37,7 +37,7 @@ setup(
     license='BSD',
     install_requires=[
         'oauthlib',
-        'requests_oauthlib'
+        'requests_oauthlib',
         'thrift==0.11.0',
     ],
 )
