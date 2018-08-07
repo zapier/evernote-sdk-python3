@@ -26,7 +26,8 @@ setup(
     author_email='api@evernote.com',
     url='http://dev.evernote.com',
     description='Evernote SDK for Python3',
-    packages=find_packages(include=['evernote'],exclude=["*.thrift", "*.thrift.*", "thrift.*", "thrift"]),
+    #long_description=read_from_same_directory('README.md'),
+    packages=find_packages(include=['evernote']),
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
@@ -38,6 +39,5 @@ setup(
     install_requires=[
         'oauthlib',
         'requests_oauthlib',
-        'thrift==0.11.0',
     ],
 )
