@@ -19,7 +19,7 @@
 
 from io import StringIO
 from struct import pack, unpack
-from thrift.Thrift import TException
+from evernote.thrift.Thrift import TException
 
 
 class TTransportException(TException):

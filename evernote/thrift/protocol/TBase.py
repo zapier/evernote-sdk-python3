@@ -17,12 +17,12 @@
 # under the License.
 #
 
-from thrift.Thrift import *
-from thrift.protocol import TBinaryProtocol
-from thrift.transport import TTransport
+from evernote.thrift.Thrift import *
+from evernote.thrift.protocol import TBinaryProtocol
+from evernote.thrift.transport import TTransport
 
 try:
-  from thrift.protocol import fastbinary
+  from evernote.thrift.protocol import fastbinary
 except:
   fastbinary = None
 

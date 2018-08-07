@@ -6,15 +6,15 @@
 #  options string: py:new_style,utf8strings
 #
 
-from thrift.Thrift import TType, TMessageType, TException, TApplicationException
+from evernote.thrift.Thrift import TType, TMessageType, TException, TApplicationException
 import evernote.edam.type.ttypes
 import evernote.edam.error.ttypes
 
 
-from thrift.transport import TTransport
-from thrift.protocol import TBinaryProtocol, TProtocol
+from evernote.thrift.transport import TTransport
+from evernote.thrift.protocol import TBinaryProtocol, TProtocol
 try:
-  from thrift.protocol import fastbinary
+  from evernote.thrift.protocol import fastbinary
 except:
   fastbinary = None
 

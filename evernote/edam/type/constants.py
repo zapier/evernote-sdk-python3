@@ -6,7 +6,7 @@
 #  options string: py:new_style,utf8strings
 #
 
-from thrift.Thrift import TType, TMessageType, TException, TApplicationException
+from evernote.thrift.Thrift import TType, TMessageType, TException, TApplicationException
 from .ttypes import *
 
 CLASSIFICATION_RECIPE_USER_NON_RECIPE = "000"

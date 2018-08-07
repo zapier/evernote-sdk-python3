@@ -17,7 +17,7 @@
 # under the License.
 #
 
-from thrift.Thrift import *
+from evernote.thrift.Thrift import *
 
 
 class TProtocolException(TException):

@@ -11,9 +11,8 @@ import urllib.request
 import evernote.edam.userstore.UserStore as UserStore
 import evernote.edam.notestore.NoteStore as NoteStore
 import evernote.edam.userstore.constants as UserStoreConstants
-
-import thrift.protocol.TBinaryProtocol as TBinaryProtocol
-import thrift.transport.THttpClient as THttpClient
+import evernote.thrift.protocol.TBinaryProtocol as TBinaryProtocol
+import evernote.thrift.transport.THttpClient as THttpClient
 
 
 class EvernoteClient(object):
