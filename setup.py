@@ -18,10 +18,14 @@ def read_from_same_directory(filename):
     return content
 
 
+ZAPIER_POST_VERSION = "post2"
 setup(
     name='evernote3',
-    version="{major}.{minor}.0.post1".format(major=EDAM_VERSION_MAJOR,
-                                           minor=EDAM_VERSION_MINOR),
+    version="{major}.{minor}.0.{post_version}".format(
+        major=EDAM_VERSION_MAJOR,
+        minor=EDAM_VERSION_MINOR,
+        post_version=ZAPIER_POST_VERSION,
+    ),
     author='Evernote Corporation',
     author_email='api@evernote.com',
     url='http://dev.evernote.com',
@@ -32,6 +36,7 @@ setup(
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
         'Topic :: Software Development :: Libraries',
+        'Programming Language :: Python :: 2'
         'Programming Language :: Python :: 3'
     ],
     license='BSD',
