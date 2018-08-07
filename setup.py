@@ -26,8 +26,7 @@ setup(
     author_email='api@evernote.com',
     url='http://dev.evernote.com',
     description='Evernote SDK for Python3',
-    #long_description=read_from_same_directory('README.md'),
-    packages=find_packages(include=['evernote']),
+    packages=find_packages(),
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
