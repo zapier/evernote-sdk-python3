@@ -4,9 +4,7 @@ import inspect
 import re
 
 import oauth2 as oauth
-import urllib.error
-import urllib.parse
-import urllib.request
+from six.moves.urllib_parse import quote, parse_qsl
 
 import evernote.edam.userstore.UserStore as UserStore
 import evernote.edam.notestore.NoteStore as NoteStore
@@ -44,17 +42,17 @@ class EvernoteClient(object):
 
         client = self._get_oauth_client()
         request_url = '{}?oauth_callback={}'.format(
-            self._get_endpoint('oauth'), urllib.parse.quote(callback_url)
+            self._get_endpoint('oauth'), quote(callback_url)
         )
 
         resp, content = client.request(request_url, 'GET')
-        request_token = dict(urllib.parse.parse_qsl(content.decode('utf-8')))
+        request_token = dict(parse_qsl(content.decode('utf-8')))
         return request_token
 
     def get_authorize_url(self, request_token):
         return '{}?oauth_token={}'.format(
             self._get_endpoint('OAuth.action'),
-            urllib.parse.quote(request_token['oauth_token'])
+            quote(request_token['oauth_token'])
         )
 
     def get_access_token(self, oauth_token,
@@ -64,7 +62,7 @@ class EvernoteClient(object):
         client = self._get_oauth_client(token)
 
         resp, content = client.request(self._get_endpoint('oauth'), 'POST')
-        access_token_dict = dict(urllib.parse.parse_qsl(content.decode('utf-8')))
+        access_token_dict = dict(parse_qsl(content.decode('utf-8')))
         self.token = access_token_dict['oauth_token']
 
         if return_full_dict:

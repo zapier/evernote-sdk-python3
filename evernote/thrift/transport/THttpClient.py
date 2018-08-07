@@ -17,19 +17,14 @@
 # under the License.
 #
 
-import http.client
 import os
 import socket
+from io import BytesIO
 import sys
-try:
-  import urllib.parse
-  quote    = urllib.parse.quote
-  urlparse = urllib.parse.urlparse
-except:
-  from urllib.parse import quote, urlparse
 import warnings
 
-from io import BytesIO
+from six.moves.urllib_parse import quote, urlparse
+from six.moves import http_client
 
 from .TTransport import *
 
@@ -60,9 +55,9 @@ class THttpClient(TTransportBase):
       self.scheme = parsed.scheme
       assert self.scheme in ('http', 'https')
       if self.scheme == 'http':
-        self.port = parsed.port or http.client.HTTP_PORT
+        self.port = parsed.port or http_client.HTTP_PORT
       elif self.scheme == 'https':
-        self.port = parsed.port or http.client.HTTPS_PORT
+        self.port = parsed.port or http_client.HTTPS_PORT
       self.host = parsed.hostname
       self.path = parsed.path
       if parsed.query:
@@ -74,9 +69,9 @@ class THttpClient(TTransportBase):
 
   def open(self):
     if self.scheme == 'http':
-      self.__http = http.client.HTTPConnection(self.host, self.port)
+      self.__http = http_client.HTTPConnection(self.host, self.port)
     else:
-      self.__http = http.client.HTTPSConnection(self.host, self.port)
+      self.__http = http_client.HTTPSConnection(self.host, self.port)
 
   def close(self):
     self.__http.close()
